@@ -1,0 +1,71 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+body{
+  text-align: center;
+  background: #4e4e4e;
+}
+form{
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  gap: 20px;
+}
+form input{
+flex-basis: 80%;
+height: 40px;
+
+}
+form button{
+  flex-basis: 20%;
+
+}
+.listitems{
+  width: 1000px;
+display: flex;
+flex-direction: column;
+margin: auto;
+margin-top: 50px;
+
+
+}
+ul{
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  
+}
+li{
+  background: #cbffce;
+padding: 10px;
+font-size: x-large;
+display: flex;
+
+align-items: center;
+  list-style: none;
+  position: relative;
+}
+span{
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  font-size: larger;
+  font-weight: 800;
+}
+input{
+  font-size: x-large;
+}
+.editbtn{
+  position: absolute;
+  right: 70px;
+  font-size: 1.2rem;
+  border: none;
+  background-color: brown;
+  color: rgb(255, 255, 255);
+  padding: 7px;
+  border-radius: 10px;
+  cursor: pointer;
+}
