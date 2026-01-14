@@ -116,12 +116,13 @@ const handleSave=(e)=>{
 }
 
   return(
-   <li onClick={()=>toggleComplete(index)}
+   <li 
    style={{textDecoration:value.completed?"line-through":"none",cursor:"pointer"}}
    >
    {isEditing ?(
     <>
       <input
+      onClick={(e)=>e.stopPropagation()}
       type='text'
       value={editValue}
       onChange={(e)=>seteditValue(e.target.value)}
