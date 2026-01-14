@@ -14,7 +14,10 @@ return savedtodo ? JSON.parse(savedtodo) : [];
 
 const updateItem=(index,newValue)=>{
 const updatedList=[...todolist];
-updatedList[index]=newValue;
+updatedList[index]={
+  ...updatedList[index],
+ text:newValue
+};
 setToDoList(updatedList);
 }
 
@@ -28,7 +31,7 @@ useEffect(() => {
 
 const saveToDoList=(e)=>{
     e.preventDefault();
-  if(todolist.includes(todoname)){
+  if(todolist.some(item=>item.text===todoname)){
   alert("Task already present")
 }
 else{
@@ -48,11 +51,12 @@ setToDoName("")
     setToDoList(updatedList);
   }
 
-    const deleteItem=(indextodelete)=>{
-    const updatedList=todolist.filter(item=>item!==todolist[indextodelete]);
-    setToDoList(updatedList);
+   const deleteItem = (indextodelete) => {
+  setToDoList(
+    todolist.filter((_, index) => index !== indextodelete)
+  );
+};
 
-  }
     const list=todolist.map((value,index)=>{
     return(
       <ToDoListItems 
@@ -105,7 +109,8 @@ function ToDoListItems({value,index,deleteItem,updateItem,toggleComplete}){
   const [isEditing, setisEditing] = useState(false);
   const [editValue, seteditValue] = useState(value.text);
 
-const handleSave=()=>{
+const handleSave=(e)=>{
+  e.stopPropagation();
   updateItem(index,editValue);
   setisEditing(false);
 }
@@ -125,7 +130,7 @@ const handleSave=()=>{
     </>
    ):(
     <>
-     {value}
+     {value.text}
    <button className='editbtn' onClick={(e)=>{
     setisEditing(true);
     e.stopPropagation();
